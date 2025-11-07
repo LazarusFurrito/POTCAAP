@@ -943,6 +943,7 @@ class InformacionProyectoDialog(QDialog):
             
             "Agradecimientos especiales a:\n"
             "============================\n"
+            "•A nuestros padres, por apoyarnos en esta trayectoria\n"
             "•ING. Manuel Mauricio Arturo Ortiz Caloca\n"
             "•Andres Alejandro Conde Castrillón\n"
             "•Andrea Villagrana\n"
@@ -953,8 +954,9 @@ class InformacionProyectoDialog(QDialog):
             "•Oso\n"
             "•Miguel Olide (Temach)\n"
             "•Cristopher Eduardo González Covarrubias\n"
+            "•Dra. Flor del Carmen\n"
             "•Las morras de los del equipo\n\n\n"
-              "Muchas gracías por su uso"
+            "Muchas gracías por su uso"
         
         )
         layout.addWidget(info_text)
