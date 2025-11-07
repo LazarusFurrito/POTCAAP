@@ -1,43 +1,50 @@
-# max30102
-MAX30102 Pulse Oximetry Sensor code for Raspberry Pi
+# Bibiliografía
 
-## Info
-The code originally comes from: https://github.com/vrano714/max30102-tutorial-raspberrypi
-but with some modifications so that it doesn't require the interrupt pin and
-instead polls by checking the read and write FIFO pointers. I've also added a
-top level of code that encapsulates everything into a thread.
+[1]	A. C. R. Tadeu, I. R. C. E. S. Caetano, I. J. De
+Figueiredo, and L. M. Santiago, “Multimorbidity
+and consultation time: a systematic review,” BMC
+Family Practice, vol. 21, no. 1, 2020.
 
-The original code is a Python port based on Maxim's reference design written to
-run on an Arduino UNO: https://github.com/MaximIntegratedRefDesTeam/RD117_ARDUINO/
+[2]	P. A. R. Fernández, J. A. J. García, J. R. R.
+Carlo, M. T. De la Garza Carranza, S. H. González,
+and E. A. R. Santoyo, “Análisis de tiempos de
+espera de los derechohabientes en el área de
+farmacia...,” Pistas Educativas, 2025.
 
-## Setup
-A couple non-standard Python libraries are required: `smbus` and `numpy`. I recommend
-installing the `numpy` library with apt as opposed to pip since pip takes a really
-long time.
-`sudo apt install python-numpy`
+[3]	 Establishing a secure connection, Salud Pública
+de México, 2015.
 
-## Use as a script
+[4]	 S. Bautista-Arredondo, A. Vargas-Flores, L. A.
+Moreno-Aguilar, and M. A. Colchero, “Utilización
+de servicios de salud en México: cascada de
+atención primaria en 2022,” Salud Pública de
+México, vol. 65, pp. s15–s22, 2023.
 
-Run `python main.py`, data will be printed in standard output. 
+[5]	 R. Vidyashankar, “Can an automated vitals
+kiosk machine deliver quality vital measurement,”
+Academia.edu, 2024.
 
-The full usage:
+[6]	 Health Pulse Kiosk, “An AI-Driven IoT
+Solution for Comprehensive Health Diagnostics,”
+IEEE Conf. Publication, 2024.
 
-```
-$ python main.py -h
-usage: main.py [-h] [-r] [-t TIME]
+[7]	P. R. Henriques and N. M. F. Rodrigues,
+“Self-service kiosk-based anamnesis system for
+emergency departments,” Univ. Minho Repository,
+2021.
 
-Read and print data from MAX30102
+[8]	I. D. Maramba, R. Jones, D. Austin, K.
+Edwards, E. Meinert, and E. Chatterjee, “The Role
+of Health Kiosks: Scoping Review,” JMIR Medical
+Informatics, vol. 10, no. 3, 2022.
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -r, --raw             print raw data instead of calculation result
-  -t TIME, --time TIME  duration in seconds to read from sensor, default 30
-```
+[9]	Establishing a secure connection, Salud Pública
+de México, 2017.
 
-## Use as a library
-To use the code, instantiate the `HeartRateMonitor` class found in `heartrate_monitor.py`.
-The thread is used by running `start_sensor` and `stop_sensor`. While the thread
-is running you can read `bpm` to get the active beats per minute. Note that a few
-seconds are required to get a reliable BPM value and the sensor is very sensitive
-to movement so a steady finger is required!
+[10]	 A. C. R. Tadeu et al., “Multimorbidity and
+consultation time,” BMC Family Practice, 2020.
+
+[11] https://sil.gobernacion.gob.mx/Archivos/Documentos/2020/09/asun_4078758_20200929_1601397299.pdf
+[12] https://www.saludiario.com/tiempo-de-espera-consulta-medica-imss/ 
+
 
