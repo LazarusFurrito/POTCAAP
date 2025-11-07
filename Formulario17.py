@@ -953,8 +953,8 @@ class InformacionProyectoDialog(QDialog):
             "•Oso\n"
             "•Miguel Olide (Temach)\n"
             "•Cristopher Eduardo González Covarrubias\n"
-            "•Las morras de los del equipo\n"
-              "Chinguen a su madre todos"
+            "•Las morras de los del equipo\n\n\n"
+              "Muchas gracías por su uso"
         
         )
         layout.addWidget(info_text)
