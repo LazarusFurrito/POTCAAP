@@ -1,0 +1,48 @@
+
+[1]	A. C. R. Tadeu, I. R. C. E. S. Caetano, I. J. De
+Figueiredo, and L. M. Santiago, “Multimorbidity
+and consultation time: a systematic review,” BMC
+Family Practice, vol. 21, no. 1, 2020.
+
+[2]	P. A. R. Fernández, J. A. J. García, J. R. R.
+Carlo, M. T. De la Garza Carranza, S. H. González,
+and E. A. R. Santoyo, “Análisis de tiempos de
+espera de los derechohabientes en el área de
+farmacia...,” Pistas Educativas, 2025.
+
+[3]	 Establishing a secure connection, Salud Pública
+de México, 2015.
+
+[4]	 S. Bautista-Arredondo, A. Vargas-Flores, L. A.
+Moreno-Aguilar, and M. A. Colchero, “Utilización
+de servicios de salud en México: cascada de
+atención primaria en 2022,” Salud Pública de
+México, vol. 65, pp. s15–s22, 2023.
+
+[5]	 R. Vidyashankar, “Can an automated vitals
+kiosk machine deliver quality vital measurement,”
+Academia.edu, 2024.
+
+[6]	 Health Pulse Kiosk, “An AI-Driven IoT
+Solution for Comprehensive Health Diagnostics,”
+IEEE Conf. Publication, 2024.
+
+[7]	P. R. Henriques and N. M. F. Rodrigues,
+“Self-service kiosk-based anamnesis system for
+emergency departments,” Univ. Minho Repository,
+2021.
+
+[8]	I. D. Maramba, R. Jones, D. Austin, K.
+Edwards, E. Meinert, and E. Chatterjee, “The Role
+of Health Kiosks: Scoping Review,” JMIR Medical
+Informatics, vol. 10, no. 3, 2022.
+
+[9]	Establishing a secure connection, Salud Pública
+de México, 2017.
+
+[10]	 A. C. R. Tadeu et al., “Multimorbidity and
+consultation time,” BMC Family Practice, 2020.
+
+[11] https://sil.gobernacion.gob.mx/Archivos/Documentos/2020/09/asun_4078758_20200929_1601397299.pdf
+[12] https://www.saludiario.com/tiempo-de-espera-consulta-medica-imss/ 
+
