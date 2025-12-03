@@ -357,9 +357,6 @@ class DatabaseManager:
         if self.connection:
             self.connection.close()
 
-import pandas as pd
-from openpyxl import Workbook
-from openpyxl.styles import Font, PatternFill, Alignment
 
 class ExcelExporter:
     def __init__(self, db_manager):
@@ -406,6 +403,29 @@ class ExcelExporter:
             
             df.rename(columns=mapeo_nombres, inplace=True)
             
+            # AGREGAR NUEVAS COLUMNAS VACÍAS
+            nuevas_columnas = {
+                'Centro Universitario': '',
+                'pH Salival': '',
+                'Glucosa en Sangre': '',
+                'Fitzpatrick Scale': ''
+            }
+            
+            for nombre_columna, valor_predeterminado in nuevas_columnas.items():
+                df[nombre_columna] = valor_predeterminado
+            
+            # Reordenar columnas para que las nuevas aparezcan después de los datos médicos
+            columnas_finales = [
+                'ID Registro', 'Nombres', 'Apellidos', 'Fecha Registro',
+                'Altura (cm)', 'Peso (kg)', 'Temperatura (°C)', 'Cintura (cm)', 'Cadera (cm)',
+                'Presión Arterial', 'Frecuencia Cardíaca (BPM)', 'SpO2 (%)',
+                'Centro Universitario', 'pH Salival', 'Glucosa en Sangre', 'Fitzpatrick Scale'
+            ]
+            
+            # Filtrar solo las columnas que existen en el DataFrame
+            columnas_finales = [col for col in columnas_finales if col in df.columns]
+            df = df[columnas_finales]
+            
             # Exportar a Excel con formato
             with pd.ExcelWriter(archivo_salida, engine='openpyxl') as writer:
                 df.to_excel(writer, sheet_name='Registros Médicos', index=False)
@@ -432,33 +452,18 @@ class ExcelExporter:
                     cell.font = Font(bold=True, color="FFFFFF")
                     cell.fill = PatternFill(start_color="366092", end_color="366092", fill_type="solid")
                     cell.alignment = Alignment(horizontal="center")
+                
+                # Resaltar las nuevas columnas (opcional)
+                nuevas_columnas_letras = ['M', 'N', 'O', 'P']  # Ajusta según la posición de tus nuevas columnas
+                for col_letter in nuevas_columnas_letras:
+                    cell = worksheet[f"{col_letter}1"]
+                    if cell:
+                        cell.fill = PatternFill(start_color="FFC000", end_color="FFC000", fill_type="solid")  # Amarillo anaranjado
             
             return True, f"Archivo exportado exitosamente: {archivo_salida}"
             
         except Exception as e:
             return False, f"Error al exportar a Excel: {str(e)}"
-    
-    def exportar_por_fecha(self, fecha_inicio, fecha_fin, archivo_salida="registros_filtrados.xlsx"):
-        """Exporta registros filtrados por fecha"""
-        try:
-            # Consulta SQL para filtrar por fecha
-            with self.db.connection.cursor() as cursor:
-                sql = """
-                SELECT * FROM pacientes 
-                WHERE DATE(fecha_registro) BETWEEN %s AND %s 
-                ORDER BY fecha_registro DESC
-                """
-                cursor.execute(sql, (fecha_inicio, fecha_fin))
-                registros = cursor.fetchall()
-            
-            if not registros:
-                return False, "No hay registros en el rango de fechas especificado"
-            
-            # Usar el mismo método de exportación
-            return self.exportar_a_excel_con_datos(registros, archivo_salida)
-            
-        except Exception as e:
-            return False, f"Error al exportar por fecha: {str(e)}"
     
     def exportar_a_excel_con_datos(self, registros, archivo_salida):
         """Exporta datos específicos a Excel"""
@@ -492,6 +497,28 @@ class ExcelExporter:
             
             df.rename(columns=mapeo_nombres, inplace=True)
             
+            # AGREGAR LAS MISMAS NUEVAS COLUMNAS VACÍAS
+            nuevas_columnas = {
+                'Centro Universitario': '',
+                'pH Salival': '',
+                'Glucosa en Sangre': '',
+                'Fitzpatrick Scale': ''
+            }
+            
+            for nombre_columna, valor_predeterminado in nuevas_columnas.items():
+                df[nombre_columna] = valor_predeterminado
+            
+            # Reordenar columnas
+            columnas_finales = [
+                'ID Registro', 'Nombres', 'Apellidos', 'Fecha Registro',
+                'Altura (cm)', 'Peso (kg)', 'Temperatura (°C)', 'Cintura (cm)', 'Cadera (cm)',
+                'Presión Arterial', 'Frecuencia Cardíaca (BPM)', 'SpO2 (%)',
+                'Centro Universitario', 'pH Salival', 'Glucosa en Sangre', 'Fitzpatrick Scale'
+            ]
+            
+            columnas_finales = [col for col in columnas_finales if col in df.columns]
+            df = df[columnas_finales]
+            
             with pd.ExcelWriter(archivo_salida, engine='openpyxl') as writer:
                 df.to_excel(writer, sheet_name='Registros Médicos', index=False)
                 
@@ -514,6 +541,13 @@ class ExcelExporter:
                     cell.font = Font(bold=True, color="FFFFFF")
                     cell.fill = PatternFill(start_color="366092", end_color="366092", fill_type="solid")
                     cell.alignment = Alignment(horizontal="center")
+                
+                # Resaltar las nuevas columnas
+                nuevas_columnas_letras = ['M', 'N', 'O', 'P']
+                for col_letter in nuevas_columnas_letras:
+                    cell = worksheet[f"{col_letter}1"]
+                    if cell:
+                        cell.fill = PatternFill(start_color="FFC000", end_color="FFC000", fill_type="solid")
             
             return True, f"Archivo exportado exitosamente: {archivo_salida}"
             
